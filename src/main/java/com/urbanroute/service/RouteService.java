@@ -25,6 +25,7 @@ public class RouteService {
     private final RouteRepository routeRepository;
     private final StopRepository stopRepository;
     private final UserRepository userRepository;
+    private final GraphService graphService;
 
     public Stop findStopById(Long id){
         return stopRepository.findById(id)
@@ -53,6 +54,7 @@ public class RouteService {
         route.setContributedBy(getCurrentUser());
 
         Route savedRoute = routeRepository.save(route);
+        graphService.buildGraph();
 
         return RouteDto.toDto(savedRoute);
     }
@@ -83,6 +85,7 @@ public class RouteService {
         if(currentUser.getRole().equals(Role.ROLE_ADMIN) ||
                 currentUser.getEmail().equals(route.getContributedBy().getEmail())){
             routeRepository.delete(route);
+            graphService.buildGraph();
         } else throw new AccessDeniedException("No Access to delete this route");
     }
 

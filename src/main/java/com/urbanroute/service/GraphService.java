@@ -33,7 +33,9 @@ public class GraphService {
     }
 
     @PostConstruct
-    public void buildGraph(){
+    public synchronized void buildGraph(){
+
+        graph.clear();
 
         List<Route> routesList = routeRepository.findAll();
 
