@@ -12,11 +12,11 @@ import lombok.Setter;
 public class RouteRequest {
 
     @NotNull(message = "Stop id is required field")
-    @Min(value = 0 , message = "stop id can not be negative")
+    @Min(value = 1 , message = "stop id must be greater than 0")
     private Long fromStopId;
 
     @NotNull(message = "Stop id is required field")
-    @Min(value = 0 , message = "stop id can not be negative")
+    @Min(value = 1 , message = "stop id must be greater than 0")
     private Long toStopId;
 
     @NotNull(message = "transportation mode is required field")
