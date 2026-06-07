@@ -4,7 +4,7 @@ A community-driven urban transit routing REST API where users contribute local t
 
 ## Live Demo Link
 
-🔗 
+🔗 https://urbanroute.onrender.com/swagger-ui/index.html
 
 ## Features
 
